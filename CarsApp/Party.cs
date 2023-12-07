@@ -22,9 +22,13 @@ namespace CarsApp
             
             var p3 = factory.CreateCharacter(CharacterClass.Mage);
             p3.name = p3.name + "_" + number;
+
+            var p4 = factory.CreateCharacter(CharacterClass.Warlord);
+            p4.name = p4.name + "_" + number;
+
             return new Party(new []
             {
-               p1,p2,p3
+               p1,p2,p3,p4
             });
         }
 

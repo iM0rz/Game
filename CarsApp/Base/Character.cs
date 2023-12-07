@@ -12,7 +12,7 @@ namespace CarsApp
         public string name;
         protected double pAtk;
         public double pDef;
-        protected Weapon weapon;
+        public Weapon weapon;
         public bool alive;
         public bool asleep;
         public Guid id;

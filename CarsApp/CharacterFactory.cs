@@ -1,4 +1,5 @@
 ﻿using System;
+using CarsApp.Characters;
 using CarsApp.Weapons;
 
 namespace CarsApp
@@ -62,6 +63,21 @@ namespace CarsApp
                         asleep: false,
                         id: Guid.NewGuid());
                 } break;
+                case CharacterClass.Warlord:
+                    {
+                        return new Warlord(
+                            hp: random.Next(0, 1000),
+                            mp: random.Next(0, 1000),
+                            name: GenerateRandomNickname(),
+                            pAtk: random.NextDouble() * 300,
+                            mAtk: random.NextDouble() * 300,
+                            pDef: random.NextDouble() * 300,
+                            mDef: random.NextDouble() * 300,
+                            weapon: new Pike(random.NextDouble() * 300, random.NextDouble() * 300, random.Next(0, 16)),
+                            asleep: false,
+                            id: Guid.NewGuid());
+                    }
+                    break;
             }
 
             return null;

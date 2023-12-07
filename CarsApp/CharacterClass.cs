@@ -4,6 +4,7 @@
     {
         Mage,
         Warrior,
-        Archer
+        Archer,
+        Warlord
     }
 }

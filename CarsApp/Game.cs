@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using CarsApp.Weapons;
 
 namespace CarsApp
 {
@@ -72,14 +73,32 @@ namespace CarsApp
                 var p2Party = parties.Except(new[] { p1Party }).First();
                 var p2 = GetRandomCharacterFromParty(p2Party, aliveCharacters);
 
-                p1.Attack(p2);
-
-                if (!p2.alive)
+                if (p1.weapon is Pike)
                 {
-                    Console.BackgroundColor = System.ConsoleColor.Red;
-                    Console.WriteLine($"===={p1.name} убил игрока {p2.name}");
-                    Console.BackgroundColor = System.ConsoleColor.Black;
+                    var secondPartyAliveMembers = FilterAlive(p2Party.Members);
+                    for (int j = 0; j < secondPartyAliveMembers.Length; j++)
+                    {
+                        p1.Attack(secondPartyAliveMembers[j]);
+                        if (!secondPartyAliveMembers[j].alive)
+                        {
+                            Console.BackgroundColor = System.ConsoleColor.Red;
+                            Console.WriteLine($"===={p1.name} убил игрока {secondPartyAliveMembers[j].name}");
+                            Console.BackgroundColor = System.ConsoleColor.Black;
+                        }
+                    }
                 }
+                else
+                {
+                    p1.Attack(p2);
+                    if (!p2.alive)
+                    {
+                        Console.BackgroundColor = System.ConsoleColor.Red;
+                        Console.WriteLine($"===={p1.name} убил игрока {p2.name}");
+                        Console.BackgroundColor = System.ConsoleColor.Black;
+                    }
+                }
+
+               
             }
         }
 
