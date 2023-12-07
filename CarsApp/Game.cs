@@ -86,7 +86,7 @@ namespace CarsApp
         private Character GetRandomCharacterFromParty(Party party, Character[] aliveCharacters)
         {
             var alivePartyMembers = new List<Character>();
-            foreach (var character in FilterAlive(aliveCharacters))
+            foreach (var character in aliveCharacters)
             {
                 if (party.IsInParty(character))
                 {
